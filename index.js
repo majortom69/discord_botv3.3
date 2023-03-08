@@ -10,7 +10,6 @@ const client = new Client({
     partials: [User, Message, GuildMember, ThreadMember] });
 
 const { loadEvents } = require("./Handlers/eventHandler");
-const { loadCommands } = require("./Handlers/commandHandler");
 
 client.distube = new DisTube(client, {
     emitNewSongOnly: true,
@@ -18,6 +17,8 @@ client.distube = new DisTube(client, {
     emitAddSongWhenCreatingQueue: false,
     plugins: [new SpotifyPlugin()]
 });
+
+
 
 client.config = require("./config.json");
 client.events = new Collection();

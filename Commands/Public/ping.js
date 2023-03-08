@@ -9,7 +9,7 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction 
      */
     execute(interaction) {
-        interaction.reply({content: "Ponos!", ephemeral: false});
+        interaction.reply({content: "лее бараны я ваши семьи шибуршил (ето был не гошан ето был бот)", ephemeral: false});
 
     }
 }
