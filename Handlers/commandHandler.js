@@ -13,6 +13,10 @@ async function loadCommands(client) {
 
     Files.forEach((file) => {
         const command = require(file);
+
+        if(command.subCommand)
+        return client.subCommands.set(command.subCommand, command);
+
         client.commands.set(command.data.name, command);
 
         commandsArray.push(command.data.toJSON());
