@@ -1,6 +1,5 @@
 const { ActivityType } = require("discord.js");
 
-const { loadEvents } = require("../../Handlers/eventHandler");
 const { loadCommands } = require("../../Handlers/commandHandler");
 
 module.exports = {
