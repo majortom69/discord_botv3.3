@@ -1,5 +1,6 @@
-const {  SlashCommandBuilder, AttachmentBuilder, ChatInputCommandInteraction, ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require('discord.js');
-const { chart } = require('chart.js');
+const {  SlashCommandBuilder, AttachmentBuilder, ChatInputCommandInteraction, ActionRowBuilder, ButtonBuilder, EmbedBuilder, ComponentBuilder } = require('discord.js');
+const chart = require('chart.js');
+// const { toBase64Image } = require('chart.js')
 
 
 
@@ -56,7 +57,7 @@ module.exports = {
                     return { name: option, value: `0 votes (${(0).toFixed(2)}%)`, inline: true };
                 })
             )
-            .setColor('BLUE');
+            .setColor('Blue');
 
         const message = await interaction.reply({ embeds: [embed], components: rows });
 
@@ -112,8 +113,9 @@ module.exports = {
                     },
                 },
             };
+            
 
-            const chartImage = chart.buildChartImage(chartData);
+            const chartImage = chart.toBase64Image(chartData);
             const attachment = new AttachmentBuilder(chartImage, 'chart.png');
 
             embed.fields = fields;
@@ -169,7 +171,7 @@ module.exports = {
                 },
             };
 
-            const chartImage = chart.buildChartImage(chartData);
+            const chartImage = chart.toBase64Image(chartData);
             const attachment = new AttachmentBuilder(chartImage, 'chart.png');
 
             embed.fields = fields;
