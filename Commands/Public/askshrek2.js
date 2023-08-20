@@ -2,10 +2,8 @@
 //chatGPT bot by major_tom69 2/27/2023
 //backend requiered (located at ..\..\..\server\server.js)
 
-//split in few messages if > 2000;\
 
-
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, TimestampStyles } = require("discord.js");
 const { Configuration, OpenAIApi } = require('openai');
 
 const coonfiguration = new Configuration({
@@ -16,8 +14,8 @@ const openai = new OpenAIApi(coonfiguration);
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("askshrek")
-    .setDescription(`Чат ДЖП`)
+    .setName("askshrek2")
+    .setDescription(`secod version of chatgpt`)
     .addStringOption(option => option.setName('question').setDescription(`question to chatGPT`).setRequired(true))
     .setDMPermission(true),
     async execute (interaction) {
@@ -28,12 +26,22 @@ module.exports = {
         
         try {
             const res = await openai.createCompletion({
-                model: "text-davinci-003",
+                model: "text-davinci-002-render-sha",
                 prompt: question,
-                max_tokens: 1800,
+                max_tokens: 2000,
                 temperature: 0.5,
 
             })
+
+            // function generteUniqueId() {
+            //     const timestamp = Date.now();
+            //     const randomNumber = Math.random();
+            //     const hexadecimalString = randomNumber.toString(16);
+
+            //     return `id-${timestamp}-${hexadecimalString}`;
+            // }
+            // const unID = generteUniqueId()
+            // console.log(unID)
 
             const embed = new EmbedBuilder()
             .setColor('Blue')
@@ -49,3 +57,5 @@ module.exports = {
 
 
 }
+
+
