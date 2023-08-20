@@ -3,7 +3,7 @@ const { SlashCommandBuilder, ChatInputCommandInteraction, ButtonBuilder, ActionR
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("poll")
-    .setDescription("Create a poll.")
+    .setDescription("Опрос")
     .setDMPermission (false)
     .addStringOption (options => options
         .setName("question")
@@ -19,11 +19,11 @@ module.exports = {
         
         const pollQuestion = interaction.options.getString("question");
         const pollEmbed = new EmbedBuilder()
-        .setDescription("**Question:**\n" + pollQuestion)
+        .setDescription("**Вопрос:**\n" + pollQuestion)
         .setImage("https://i.ibb.co/vxdBKFd/Untitled-1.gif")
         .addFields([
-            {name: "Yes's", value: "0", inline: true}, 
-            {name: "No's", value: "0", inline: true}
+            {name: "Да", value: "0", inline: true}, 
+            {name: "Нет", value: "0", inline: true}
         ])
         .setColor([104, 204, 156]);
 
